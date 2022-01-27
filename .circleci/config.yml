@@ -2,24 +2,6 @@ version: 2.1
 
 jobs:
   build:
-    docker:
-      - image: python:3.7
-    steps:
-      - checkout
-      - run:
-          name: Install requirements
-          command: |
-            pip install --upgrade pip --no-cache-dir
-            pip install -r requirements.txt --no-cache-dir
-      - run:
-          name: Unit tests
-          command: |
-            pytest --junitxml=test-reports/junit.xml
-      - store_test_results:
-          path: test-reports
-      - store_artifacts:
-          path: test-reports
-  build_gpu:
     machine:
       resource_class: gpu.nvidia.small
       image: ubuntu-1604-cuda-10.1:201909-23
