@@ -19,3 +19,9 @@ jobs:
           path: test-reports
       - store_artifacts:
           path: test-reports
+  build_gpu:
+    machine:
+      resource_class: gpu.nvidia.small
+      image: ubuntu-1604-cuda-10.1:201909-23
+    steps:
+      - run: nvidia-smi
